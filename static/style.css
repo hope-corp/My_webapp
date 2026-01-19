@@ -57,3 +57,102 @@ body {
     color: #8E8E93;
     margin-top: 40px;
 }
+
+/* Container for the Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Base Prompt Card Style */
+.prompt-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.prompt-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: #38bdf8;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Premium Specific Styling */
+.prompt-card.premium {
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: linear-gradient(145deg, rgba(56, 189, 248, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.prompt-card.premium::after {
+    content: '★';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #38bdf8;
+    font-size: 1.2rem;
+}
+
+/* Typography inside cards */
+.prompt-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.prompt-card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Badge System */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.badge-free { background: #475569; color: #f8fafc; }
+.badge-premium { background: #38bdf8; color: #0f172a; }
+
+/* The Action Button */
+.card-btn {
+    background: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.card-btn:hover {
+    filter: brightness(1.1);
+}
+
+.card-btn:disabled {
+    background: #1e293b;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
