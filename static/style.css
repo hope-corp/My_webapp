@@ -235,6 +235,60 @@ body {
     padding-top: 100px;
 }
 
+.site-footer {
+    background: rgba(15, 23, 42, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 20px 20px 20px;
+    margin-top: 80px;
+    color: #94a3b8;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.footer-info p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-links h4, .footer-contact h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #38bdf8;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.8rem;
+}
 
 
 
