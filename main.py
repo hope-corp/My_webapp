@@ -45,6 +45,11 @@ async def admin_view(request: Request):
     all_users = c.fetchall()
     conn.close()
     return templates.TemplateResponse("admin.html", {"request": request, "users": all_users})
+@app.get("/prompts", response_class=HTMLResponse)
+async def read_prompts_page(request: Request):
+    # This looks inside your 'templates' folder for a file named prompts.html
+    return templates.TemplateResponse("prompts.html", {"request": request})
+
 
 
 
