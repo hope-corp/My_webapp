@@ -35,6 +35,18 @@ async def admin_dashboard(request: Request, authenticated: bool = Depends(check_
     # Return a template with the user data
     return templates.TemplateResponse("admin.html", {"request": request, "users": users})
 
+# Add this to main.py
+@app.get("/admin-dashboard")
+async def admin_view(request: Request):
+    # Only you should know this URL exists!
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM users")
+    all_users = c.fetchall()
+    conn.close()
+    return templates.TemplateResponse("admin.html", {"request": request, "users": all_users})
+
+
 
 app = FastAPI()
 
