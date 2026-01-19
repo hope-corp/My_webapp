@@ -1,26 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
-</head>
-<body style="padding: 40px;">
-    <h1>User Management</h1>
-    <table border="1" style="width:100%; color: white; border-collapse: collapse;">
-        <tr style="background: #38bdf8; color: #0f172a;">
-            <th>Username</th>
-            <th>Tier</th>
-            <th>Usage Today</th>
-            <th>Last Active</th>
-        </tr>
-        {% for user in users %}
-        <tr>
-            <td>{{ user[0] }}</td>
-            <td>{{ user[1] }}</td>
-            <td>{{ user[2] }}</td>
-            <td>{{ user[3] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - AI Forge{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 100px 20px;">
+    <h1 style="margin-bottom: 30px;">User Management Dashboard</h1>
+    
+    <div class="prompt-card" style="width: 100%; max-width: 1000px;">
+        <table style="width:100%; color: white; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid #38bdf8; color: #38bdf8;">
+                    <th style="padding: 15px;">Username</th>
+                    <th style="padding: 15px;">Tier</th>
+                    <th style="padding: 15px;">Usage Today</th>
+                    <th style="padding: 15px;">Last Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <td style="padding: 15px;">{{ user[0] }}</td>
+                    <td style="padding: 15px;">
+                        <span class="badge {% if user[1] == 'premium' %}badge-premium{% else %}badge-free{% endif %}">
+                            {{ user[1] }}
+                        </span>
+                    </td>
+                    <td style="padding: 15px;">{{ user[2] }}</td>
+                    <td style="padding: 15px;">{{ user[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        {% if not users %}
+        <p style="padding: 20px; text-align: center; color: #94a3b8;">No users found in the database yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
