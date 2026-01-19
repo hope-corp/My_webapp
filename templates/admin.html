@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body style="padding: 40px;">
+    <h1>User Management</h1>
+    <table border="1" style="width:100%; color: white; border-collapse: collapse;">
+        <tr style="background: #38bdf8; color: #0f172a;">
+            <th>Username</th>
+            <th>Tier</th>
+            <th>Usage Today</th>
+            <th>Last Active</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
