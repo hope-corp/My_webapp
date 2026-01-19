@@ -1,168 +1,47 @@
-
+/* 1. MODERN DESIGN VARIABLES */
 :root {
-    --primary: #007AFF;
-    --bg: #F2F2F7;
-    --card: #FFFFFF;
-    --text: #1C1C1E;
+    --bg-dark: #0f172a;
+    --accent-blue: #38bdf8;
+    --card-glass: rgba(255, 255, 255, 0.03);
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+/* 2. GLOBAL RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: #0f172a; /* The base color */
+    background-color: var(--bg-dark);
     background-image: 
-        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.05) 0px, transparent 50%), 
-        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.02) 0px, transparent 50%);
-    color: #f8fafc;
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.07) 0px, transparent 50%), 
+        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.03) 0px, transparent 50%);
+    color: var(--text-main);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    line-height: 1.5;
     min-height: 100vh;
+    padding-top: 80px; /* Space for fixed navbar */
 }
 
-
+/* 3. LAYOUT CONTAINERS */
 .container {
-    max-width: 450px;
-    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.app-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.card {
-    background: var(--card);
-    padding: 25px;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    width: 100%;
-    padding: 18px;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-.btn:active {
-    opacity: 0.8;
-    transform: scale(0.98);
-}
-
-.footer {
-    text-align: center;
-    font-size: 12px;
-    color: #8E8E93;
-    margin-top: 40px;
-}
-
-/* Container for the Grid */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-top: 40px;
 }
 
-/* Base Prompt Card Style */
-.prompt-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.prompt-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.07);
-    border-color: #38bdf8;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Premium Specific Styling */
-.prompt-card.premium {
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    background: linear-gradient(145deg, rgba(56, 189, 248, 0.05), rgba(255, 255, 255, 0.02));
-}
-
-.prompt-card.premium::after {
-    content: '★';
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #38bdf8;
-    font-size: 1.2rem;
-}
-
-/* Typography inside cards */
-.prompt-card h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.5rem;
-    color: #fff;
-}
-
-.prompt-card p {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-/* Badge System */
-.badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    letter-spacing: 0.5px;
-}
-
-.badge-free { background: #475569; color: #f8fafc; }
-.badge-premium { background: #38bdf8; color: #0f172a; }
-
-/* The Action Button */
-.card-btn {
-    background: #38bdf8;
-    color: #0f172a;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: filter 0.2s;
-}
-
-.card-btn:hover {
-    filter: brightness(1.1);
-}
-
-.card-btn:disabled {
-    background: #1e293b;
-    color: #64748b;
-    cursor: not-allowed;
-}
-
-/* Navigation Bar Styling */
+/* 4. NAVIGATION */
 .navbar {
     position: fixed;
     top: 0;
@@ -170,19 +49,20 @@ body {
     height: 70px;
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-glass);
     z-index: 1000;
     display: flex;
     align-items: center;
 }
 
 .nav-container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 .logo {
@@ -190,119 +70,71 @@ body {
     font-weight: 800;
     color: #fff;
     text-decoration: none;
-    letter-spacing: -1px;
 }
 
-.logo span { color: #38bdf8; }
+.logo span { color: var(--accent-blue); }
 
-.nav-links {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
+.nav-links { display: flex; gap: 30px; align-items: center; }
 .nav-links a {
-    color: #94a3b8;
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color 0.3s;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--accent-blue); }
+
+/* 5. CARDS & BUTTONS */
+.prompt-card {
+    background: var(--card-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    padding: 30px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav-links a:hover { color: #38bdf8; }
-
-/* Responsive Grid Adjustments */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Hide links on mobile initially */
-    }
-    
-    .bento-grid {
-        grid-template-columns: 1fr; /* Stack cards vertically on phones */
-        padding: 10px;
-    }
-
-    .prompt-card {
-        width: auto; /* Allow card to take full width */
-    }
-
-    body {
-        padding-top: 100px; /* Space for the fixed navbar */
-    }
+.prompt-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.06);
 }
 
-/* Base adjustment for Desktop to prevent content hidden under Navbar */
-body {
-    padding-top: 100px;
+.card-btn {
+    background: var(--accent-blue);
+    color: #0f172a;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.2s;
 }
 
+.card-btn:hover { filter: brightness(1.1); }
+
+/* 6. BADGES */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+.badge-free { background: #334155; color: #fff; }
+.badge-premium { background: var(--accent-blue); color: #0f172a; }
+
+/* 7. FOOTER */
 .site-footer {
-    background: rgba(15, 23, 42, 0.9);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 60px 20px 20px 20px;
-    margin-top: 80px;
-    color: #94a3b8;
+    margin-top: 100px;
+    background: rgba(0,0,0,0.2);
+    padding: 60px 20px 20px;
+    border-top: 1px solid var(--border-glass);
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-}
-
-.footer-info p {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.footer-links h4, .footer-contact h4 {
-    color: #fff;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: #94a3b8;
-    text-decoration: none;
-    transition: color 0.3s;
-}
+/* 8. MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(15, 23, 42, 0.95);
-        padding: 20px;
-        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-    }
+    .nav-links { display: none; } /* JavaScript will toggle this */
+    .bento-grid { grid-template-columns: 1fr; }
 }
-
-.footer-links a:hover {
-    color: #38bdf8;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.8rem;
-}
-
-
-
-
