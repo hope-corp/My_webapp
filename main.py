@@ -9,6 +9,8 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 security = HTTPBasic()
+app = FastAPI()
+
 
 # 1. SET YOUR SECRET CREDENTIALS HERE
 ADMIN_USERNAME = "oduro kelvin"
@@ -53,7 +55,6 @@ async def read_prompts_page(request: Request):
 
 
 
-app = FastAPI()
 
 # Mount the 'static' folder for CSS and Images
 app.mount("/static", StaticFiles(directory="static"), name="static")
