@@ -277,6 +277,19 @@ body {
     text-decoration: none;
     transition: color 0.3s;
 }
+@media (max-width: 768px) {
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        padding: 20px;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+}
 
 .footer-links a:hover {
     color: #38bdf8;
