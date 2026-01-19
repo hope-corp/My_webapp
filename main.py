@@ -11,8 +11,8 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 security = HTTPBasic()
 
 # 1. SET YOUR SECRET CREDENTIALS HERE
-ADMIN_USERNAME = "your_name"
-ADMIN_PASSWORD = "your_secret_password"
+ADMIN_USERNAME = "oduro kelvin"
+ADMIN_PASSWORD = "KelvinOduro544"
 
 def check_admin(credentials: HTTPBasicCredentials = Depends(security)):
     if credentials.username != ADMIN_USERNAME or credentials.password != ADMIN_PASSWORD:
