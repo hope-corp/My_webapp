@@ -1,34 +1,49 @@
 {% extends "base.html" %}
 
- 
-
 {% block content %}
-   <div class="container">
-        <header class="app-header">
-            <h1>My Digital Space</h1>
-            <p>Built with Python on my phone</p>
-        </header>
+<div class="container">
+    <header class="app-header">
+        <h1>My Digital Space</h1>
+        <p>Built with Python on my phone</p>
+    </header>
 
-        <main class="card">
-            <h2>Welcome</h2>
-            <p>This website is the foundation for my future mobile app. It's hosted on the cloud and accessible to anyone with my domain.</p>
-            
-            <button class="btn" onclick="alert('App is running perfectly!')">Test App Connection</button>
-        </main>
+    <main class="card">
+        <h2>Welcome</h2>
+        <p>This website is the foundation for my future mobile app. It's hosted on the cloud and accessible to anyone with my domain.</p>
+        <button class="btn" onclick="alert('App is running perfectly!')">Test App Connection</button>
+    </main>
 
-<div class="bento-container">
-    <div class="prompt-card">
-        <span class="badge">FREE</span>
-        <h3>Basic Math Solver</h3>
-        <p>Get step-by-step solutions for algebra.</p>
-        <button class="main-btn">Use 1/1 Today</button>
-    </div>
+    <div class="bento-container">
+        <div class="prompt-card">
+            <span class="badge badge-free">FREE</span>
+            <h3>Basic Math Solver</h3>
+            <p>Get step-by-step solutions for algebra.</p>
+            <button class="card-btn">Use 1/1 Today</button>
+        </div>
 
-    <div class="prompt-card premium">
-        <span class="badge">PREMIUM</span>
-        <h3>Advanced Physics Architect</h3>
-        <p>Complex simulations and LaTeX formatting.</p>
-        <button class="main-btn">Use 3/3 Today</button>
-   
-{% end block %}
+        <div class="prompt-card premium">
+            <span class="badge badge-premium">PREMIUM</span>
+            <h3>Advanced Physics Architect</h3>
+            <p>Complex simulations and LaTeX formatting.</p>
+            <button class="card-btn">Use 3/3 Today</button>
+        </div> </div> </div> {% endblock %} ```
 
+
+
+---
+
+### Why this caused the error:
+Jinja2 starts reading your `index.html` from the top. When it hits `{% end block %}` (with the space), it doesn't recognize it as a "close" command. It thinks you are trying to start a new command but forgot a "token" (a specific character like a quote or a bracket). 
+
+### Final Check for your `base.html`
+Since we are using `{% extends "base.html" %}`, make sure your `base.html` has the "receiver" for this content. It should look like this:
+
+```html
+<body>
+    <nav>...</nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>...</footer>
+</body>
