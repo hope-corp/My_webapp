@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Forge{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">AI<span>Forge</span></a>
+            <div class="nav-links">
+                <a href="/prompts">Prompts</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <button class="login-btn">Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer style="padding: 20px; text-align: center; color: #64748b;">
+        &copy; 2026 AI Forge - Premium Prompt Marketplace
+    </footer>
+</body>
+</html>
