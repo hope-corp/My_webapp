@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Library - AI Forge{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 50px;">
+    <h1>Premium Prompt Library</h1>
+    <p>Select a category to view high-performance prompts.</p>
+
+    <div class="bento-grid">
+        <div class="prompt-card">
+            <span class="badge badge-free">Math</span>
+            <h3>Calculus Expert</h3>
+            <p>Master complex derivatives and integrals.</p>
+            <a href="/generate/math" class="card-btn" style="text-align: center; text-decoration: none;">View Prompt</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
